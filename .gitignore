@@ -1,0 +1,28 @@
+# Binarios
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Binarios de testing
+*.test
+
+# Salidas de herramientas de go coverage
+*.out
+
+# El ejecutable compilado
+piamonte-proxy
+
+# Variables de entorno (IMPORTANTE: Nunca subir credenciales)
+.env
+
+# Archivos específicos del Sistema Operativo
+.DS_Store
+Thumbs.db
+
+# Configuración de IDEs y editores
+.vscode/
+.idea/
+*.swp
+*.swo
