@@ -31,9 +31,15 @@ func UploadHandler(cfg *config.Config) http.HandlerFunc {
 		}
 		defer file.Close()
 
-		log.Printf("Received file from Odoo: %s (%d bytes)", header.Filename, header.Size)
+		// Forzar a quitar el .txt si el sistema de origen lo agrega por defecto
+		filename := header.Filename
+		if len(filename) > 4 && filename[len(filename)-4:] == ".txt" {
+			filename = filename[:len(filename)-4]
+		}
 
-		err = sftpclient.ForwardToSFTP(cfg, file, header.Filename)
+		log.Printf("Received file from Odoo: %s (%d bytes) - Will save as: %s", header.Filename, header.Size, filename)
+
+		err = sftpclient.ForwardToSFTP(cfg, file, filename)
 		if err != nil {
 			log.Printf("SFTP transfer failed: %v", err)
 			http.Error(w, "Internal server error during remote transfer.", http.StatusInternalServerError)

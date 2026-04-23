@@ -28,8 +28,8 @@ func LoadConfig() *Config {
 	defaultKnownHosts := filepath.Join(homeDir, ".ssh", "known_hosts")
 
 	return &Config{
-		SftpUser:               getEnv("sftpUser", "TU_USUARIO_SFTP"),
-		SftpPassword:           getEnv("sftpPassword", "TU_PASSWORD_SFTP"),
+		SftpUser:               getEnv("sftpUser", "USUARIO_SFTP"),
+		SftpPassword:           getEnv("sftpPassword", "PASSWORD_SFTP"),
 		SftpHost:               getEnv("sftpHost", "IP_PIAMONTE:22"),
 		SftpDestDir:            getEnv("sftpDestDir", "/ruta/destino/en/piamonte/"),
 		ApiPort:                getEnv("apiPort", ":8080"),
